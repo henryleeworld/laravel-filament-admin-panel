@@ -33,5 +33,5 @@ $ php artisan migrate --seed
 ![](https://i.imgur.com/ymHnBYj.png)
 > 使用現有的帳號登入
 
-![](https://i.imgur.com/vtxzVDG.png)
+![](https://i.imgur.com/C6sDKKX.png)
 > 省去不少前端布局的時間，可以把時間拿來處理各項統計資料的分析及產出
