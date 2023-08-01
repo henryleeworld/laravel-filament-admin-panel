@@ -15,7 +15,6 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class UserResource extends Resource
@@ -72,7 +71,7 @@ class UserResource extends Resource
                     ])
                     ->action(function (User $record, array $data) {
                         $record->update([
-                            'password' => Hash::make($data['new_password'])
+                            'password' => $data['new_password']
                         ]);
                         Filament::notify('success', 'Password updated successfully');
                     })
