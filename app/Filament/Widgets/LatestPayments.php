@@ -14,6 +14,11 @@ class LatestPayments extends BaseWidget
 
     protected int | string | array $columnSpan = 'full';
 
+    protected function getTableHeading(): string
+    {
+        return __('Latest Payments');
+    }
+
     protected function getTableQuery(): Builder
     {
         return Payment::with('product')->latest()->take(5);
@@ -22,9 +27,13 @@ class LatestPayments extends BaseWidget
     protected function getTableColumns(): array
     {
         return [
-            Tables\Columns\TextColumn::make('created_at')->label('Time'),
-            Tables\Columns\TextColumn::make('total')->money(),
-            Tables\Columns\TextColumn::make('product.name'),
+            Tables\Columns\TextColumn::make('created_at')
+                ->label(__('Time')),
+            Tables\Columns\TextColumn::make('total')
+                ->label(__('Total'))
+                ->money(),
+            Tables\Columns\TextColumn::make('product.name')
+                ->label(__('Product')),
         ];
     }
 

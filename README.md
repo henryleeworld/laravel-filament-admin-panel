@@ -16,13 +16,17 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
-- 建置正式環境的資源版本。
-```sh
-$ npm run build
-```
 - 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移，並執行資料庫填充（如果要測試的話）。
 ```sh
 $ php artisan migrate --seed
+```
+- 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
+```sh
+$ npm install
+```
+- 執行正式環境版本化資源管道並編譯。
+```sh
+$ npm run build
 ```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
 - 你可以經由 `/admin/login` 來進行登入，預設的電子郵件和密碼分別為 __admin@admin.com__ 和 __password__ 。
@@ -30,8 +34,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/ymHnBYj.png)
+![](https://i.imgur.com/wuLMyQe.png)
 > 使用現有的帳號登入
 
-![](https://i.imgur.com/C6sDKKX.png)
+![](https://i.imgur.com/9a3qymc.png)
 > 省去不少前端布局的時間，可以把時間拿來處理各項統計資料的分析及產出

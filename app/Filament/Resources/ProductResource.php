@@ -6,9 +6,9 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Support\Str;
 
@@ -16,7 +16,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Shop';
 
@@ -31,40 +31,46 @@ class ProductResource extends Resource
                 Forms\Components\Wizard::make([
                     Forms\Components\Wizard\Step::make('Main fields')->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label(__('Name'))
                             ->required()
                             ->reactive()
-                            ->afterStateUpdated(function (\Closure $set, $state) {
+                            ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        Forms\Components\TextInput::make('slug')->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->label(__('Slug'))
+                            ->required(),
                     ]),
                     Forms\Components\Wizard\Step::make('Secondary fields')->schema([
-                        Forms\Components\TextInput::make('price')->required()->rule('numeric'),
-                        Forms\Components\FileUpload::make('image'),
+                        Forms\Components\TextInput::make('price')
+                            ->label(__('Price'))
+                            ->required()
+                            ->rule('numeric'),
+                        Forms\Components\FileUpload::make('image')
+                            ->label(__('Image')),
                     ]),
                 ])
             ]);
     }
 
-    public static function table(Table $table): Table
+    public static function getModelLabel(): string
     {
-        return $table
-            ->columns([
-                Tables\Columns\ImageColumn::make('image')->width(50)->height(50),
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('price')->sortable()->money('usd'),
-            ])
-            ->defaultSort('price', 'desc')
-            ->filters([
-                //
-            ]);
+        return __('product');
     }
 
-    public static function getRelations(): array
+    public static function getNavigationBadge(): ?string
     {
-        return [
-            RelationManagers\TagsRelationManager::class,
-        ];
+        return self::getModel()::count();
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Shop');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Product');
     }
 
     public static function getPages(): array
@@ -76,8 +82,33 @@ class ProductResource extends Resource
         ];
     }
 
-    protected static function getNavigationBadge(): ?string
+    public static function getRelations(): array
     {
-        return self::getModel()::count();
+        return [
+            RelationManagers\TagsRelationManager::class,
+        ];
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->label(__('Image'))
+                    ->width(50)
+                    ->height(50),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name'))
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->label(__('Price'))
+                    ->sortable()
+                    ->money('usd'),
+            ])
+            ->defaultSort('price', 'desc')
+            ->filters([
+                //
+            ]);
     }
 }

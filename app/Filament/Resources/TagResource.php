@@ -6,9 +6,9 @@ use App\Filament\Resources\TagResource\Pages;
 use App\Filament\Resources\TagResource\RelationManagers;
 use App\Models\Tag;
 use Filament\Forms;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -27,29 +27,24 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('name')
+                    ->label(__('Name')),
             ]);
     }
 
-    public static function table(Table $table): Table
+    public static function getModelLabel(): string
     {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name'),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+        return __('tag');
     }
 
-    public static function getRelations(): array
+    public static function getNavigationGroup(): ?string
     {
-        return [
-            //
-        ];
+        return __('Shop');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Tag');
     }
 
     public static function getPages(): array
@@ -59,5 +54,27 @@ class TagResource extends Resource
             'create' => Pages\CreateTag::route('/create'),
             'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name')),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 }

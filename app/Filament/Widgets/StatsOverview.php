@@ -14,9 +14,11 @@ class StatsOverview extends BaseWidget
     {
         return [
             Card::make('Payments this month',
-                Payment::where('created_at', '>', now()->subDays(30))->count()),
+                Payment::where('created_at', '>', now()->subDays(30))->count())
+            ->label(__('Payments this month')),
             Card::make('Income this month', '$' .
-                Payment::where('created_at', '>', now()->subDays(30))->sum('total')),
+                Payment::where('created_at', '>', now()->subDays(30))->sum('total'))
+            ->label(__('Income this month')),
         ];
     }
 }

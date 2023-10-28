@@ -35,4 +35,9 @@ class RevenueChart extends LineChartWidget
             'labels' => $data->map(fn (TrendValue $value) => $value->date),
         ];
     }
+
+    public function getHeading(): string
+    {
+        return __('Revenue Per Day');
+    }
 }
