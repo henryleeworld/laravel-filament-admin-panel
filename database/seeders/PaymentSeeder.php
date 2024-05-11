@@ -9,11 +9,9 @@ use Illuminate\Database\Seeder;
 class PaymentSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Run the database seeders.
      */
-    public function run()
+    public function run(): void
     {
         Payment::factory()->count(100)->create();
     }

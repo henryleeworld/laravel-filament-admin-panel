@@ -20,8 +20,19 @@ class TagsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('name')
+                    ->label(__('Name')),
             ]);
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('tag');
+    }
+
+    protected function getTableHeading(): string
+    {
+        return __('Tags');
     }
 
     public function table(Table $table): Table

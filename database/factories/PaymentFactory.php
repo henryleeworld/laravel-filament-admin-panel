@@ -10,6 +10,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PaymentFactory extends Factory
 {
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         $users = collect(User::all()->modelKeys());
@@ -18,9 +24,9 @@ class PaymentFactory extends Factory
 
         return [
             'user_id' => $users->random(),
-            'voucher_id' => $this->faker->boolean(60) ? $voucher->id : null,
-            'taxes' => $this->faker->numberBetween(0, 20),
-            'created_at' => $this->faker->dateTimeBetween('-100 days', 'now'),
+            'voucher_id' => fake()->boolean(60) ? $voucher->id : null,
+            'taxes' => fake()->numberBetween(0, 20),
+            'created_at' => fake()->dateTimeBetween('-100 days', 'now'),
         ];
     }
 
@@ -31,7 +37,7 @@ class PaymentFactory extends Factory
 
             $payment->product_id = $product->id;
             $payment->subtotal = $product->price;
-            $payment->taxes = $this->faker->numberBetween(0, 20) * $product->price;
+            $payment->taxes = fake()->numberBetween(0, 20) * $product->price;
             $payment->total = $payment->subtotal + $payment->taxes;
         });
     }

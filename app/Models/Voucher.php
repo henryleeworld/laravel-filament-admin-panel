@@ -11,6 +11,11 @@ class Voucher extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = ['code', 'discount_percent', 'product_id'];
 
     public function product(): belongsTo

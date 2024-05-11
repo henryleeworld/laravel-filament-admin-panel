@@ -9,11 +9,9 @@ use Illuminate\Database\Seeder;
 class VoucherSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Run the database seeders.
      */
-    public function run()
+    public function run(): void
     {
         Voucher::create(['code' => 'CODE1', 'discount_percent' => 10]);
         Voucher::create(['code' => 'CODE2', 'discount_percent' => 20]);

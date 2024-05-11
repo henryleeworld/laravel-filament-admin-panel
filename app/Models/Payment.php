@@ -10,6 +10,11 @@ class Payment extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = ['product_id', 'user_id', 'voucher_id', 'subtotal', 'taxes', 'total'];
 
     public function product(): BelongsTo

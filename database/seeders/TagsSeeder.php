@@ -7,7 +7,10 @@ use Illuminate\Database\Seeder;
 
 class TagsSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeders.
+     */
+    public function run(): void
     {
         Tag::create(['name' => 'Offer']);
         Tag::create(['name' => 'Coming soon']);

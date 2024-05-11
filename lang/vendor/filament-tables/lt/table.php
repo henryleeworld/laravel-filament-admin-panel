@@ -11,7 +11,13 @@ return [
     'columns' => [
 
         'text' => [
-            'more_list_items' => 'ir :count daugiau',
+
+            'actions' => [
+                'collapse_list' => 'Slėpti :count',
+                'expand_list' => 'Rodyti dar :count',
+            ],
+
+            'more_list_items' => 'ir dar :count',
         ],
 
     ],
@@ -24,6 +30,10 @@ return [
 
         'bulk_select_record' => [
             'label' => 'Pažymėti/atžymėti įrašą :key masiniam veiksmui.',
+        ],
+
+        'bulk_select_group' => [
+            'label' => 'Pažymėti/atžymėti grupę :title masiniam veiksmui.',
         ],
 
         'search' => [
@@ -94,13 +104,17 @@ return [
 
         'heading' => 'Nerasta įrašų',
 
-        'description' => 'Sukurk :model, kad pradėti.',
+        'description' => 'Norėdami pradėti, sukurkite :model.',
 
     ],
 
     'filters' => [
 
         'actions' => [
+
+            'apply' => [
+                'label' => 'Taikyti filtrus',
+            ],
 
             'remove' => [
                 'label' => 'Pašalinti filtrą',
@@ -131,7 +145,7 @@ return [
 
         'trashed' => [
 
-            'label' => 'Ištrinti įrašaų',
+            'label' => 'Ištrinti įrašai',
 
             'only_trashed' => 'Tik ištrinti įrašai',
 
@@ -167,7 +181,7 @@ return [
 
     ],
 
-    'reorder_indicator' => 'Vilk ir paleisk pakeisti įrašų eiliškumui.',
+    'reorder_indicator' => 'Vilkite ir paleiskite įrašų rikiavimui.',
 
     'selection_indicator' => [
 

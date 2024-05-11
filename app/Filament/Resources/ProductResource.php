@@ -29,7 +29,7 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Wizard::make([
-                    Forms\Components\Wizard\Step::make('Main fields')->schema([
+                    Forms\Components\Wizard\Step::make(__('Main fields'))->schema([
                         Forms\Components\TextInput::make('name')
                             ->label(__('Name'))
                             ->required()
@@ -41,7 +41,7 @@ class ProductResource extends Resource
                             ->label(__('Slug'))
                             ->required(),
                     ]),
-                    Forms\Components\Wizard\Step::make('Secondary fields')->schema([
+                    Forms\Components\Wizard\Step::make(__('Secondary fields'))->schema([
                         Forms\Components\TextInput::make('price')
                             ->label(__('Price'))
                             ->required()

@@ -118,6 +118,7 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('changePassword')
+                    ->label(__('Change password'))
                     ->form([
                         TextInput::make('new_password')
                             ->label(__('New password'))

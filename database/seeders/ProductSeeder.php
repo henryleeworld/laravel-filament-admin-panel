@@ -9,11 +9,9 @@ use Illuminate\Database\Seeder;
 class ProductSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Run the database seeders.
      */
-    public function run()
+    public function run(): void
     {
         Product::create(['name' => 'Product 1', 'slug' => 'product-1', 'price' => 2999]);
         Product::create(['name' => 'Product 2', 'slug' => 'product-2', 'price' => 3999]);

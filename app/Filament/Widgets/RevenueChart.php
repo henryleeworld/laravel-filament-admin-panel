@@ -28,7 +28,7 @@ class RevenueChart extends LineChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __(trim('Revenue ($)')),
+                    'label' => __('Revenue ($)'),
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate / 100),
                 ],
             ],
