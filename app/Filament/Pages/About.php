@@ -24,6 +24,6 @@ class About extends Page
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Other');
+        return __(static::$navigationGroup);
     }
 }

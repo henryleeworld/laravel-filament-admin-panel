@@ -70,7 +70,7 @@ class UserResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Shop');
+        return __(static::$navigationGroup);
     }
 
     public static function getNavigationLabel(): string
