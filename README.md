@@ -1,4 +1,4 @@
-# Laravel 11 Filament 管理面板
+# Laravel 12 Filament 管理面板
 
 Filament 管理面板採用快速建立簡捷的 TALL（Tailwind CSS、Alpine.js、Laravel 和 Livewire）堆疊應用程式的工具組，可以建立管理面板、表單、表格、通知等。
 
@@ -27,8 +27,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/TGYXXm6.png)
+![](https://i.imgur.com/FIRWN1x.png)
 > 使用現有的帳號登入
 
-![](https://i.imgur.com/OK0LlrS.png)
+![](https://i.imgur.com/cRWhLdh.png)
 > 省去不少前端布局的時間，可以把時間拿來處理各項統計資料的分析及產出

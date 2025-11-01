@@ -3,17 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = ['name'];
 
-    public function products()
+    /**
+     * The products that belong to the tag.
+     */
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }

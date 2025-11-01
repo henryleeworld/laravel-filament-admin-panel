@@ -2,19 +2,23 @@
 
 namespace App\Filament\Pages;
 
+use BackedEnum;
 use Filament\Pages\Page;
+use Filament\Support\Icons\Heroicon;
+use Illuminate\Contracts\Support\Htmlable;
+use UnitEnum;
 
 class About extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
 
-    protected static ?string $navigationGroup = 'Other';
+    protected static string|UnitEnum|null $navigationGroup = 'Other';
 
-    protected static string $view = 'filament.pages.about';
+    protected string $view = 'filament.app.pages.about';
 
-    public function getTitle(): string
+    public static function getNavigationGroup(): string|UnitEnum|null
     {
-        return __('About');
+        return __(static::$navigationGroup);
     }
 
     public static function getNavigationLabel(): string
@@ -22,8 +26,8 @@ class About extends Page
         return __('About');
     }
 
-    public static function getNavigationGroup(): ?string
+    public function getTitle(): string|Htmlable
     {
-        return __(static::$navigationGroup);
+        return __('About');
     }
 }

@@ -3,17 +3,18 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Payment;
-use Filament\Widgets\LineChartWidget;
+use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
+use Illuminate\Contracts\Support\Htmlable;
 
-class RevenueChart extends LineChartWidget
+class RevenueChart extends ChartWidget
 {
-    protected static ?string $heading = 'Revenue Per Day';
-
-    protected int | string | array $columnSpan = 'full';
+    protected ?string $heading = 'Revenue Per Day';
 
     protected static ?int $sort = 3;
+
+    protected int|string|array $columnSpan = 'full';
 
     protected function getData(): array
     {
@@ -36,8 +37,13 @@ class RevenueChart extends LineChartWidget
         ];
     }
 
-    public function getHeading(): string
+    public function getHeading(): string|Htmlable|null
     {
-        return __('Revenue Per Day');
+        return __($this->heading);
+    }
+
+    protected function getType(): string
+    {
+        return 'line';
     }
 }
